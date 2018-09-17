@@ -17,15 +17,15 @@ public class Palindrome {
     public static boolean isPalindrome(String s) {
         int length = s.length();
         int i = 0;
-        int j = length - 1;
+        boolean isLeng = (length == 0 || length == 1);
 
-        if (length == 0 || length == 1) {
+        if (isLeng) {
             return true;
-        } else if (s.charAt(i) == s.charAt(length - 1)) {
-            i++;
-            String sub = s.substring(i, j);
-            j--;
-            return isPalindrome(sub);
-        } else return false;
+        } else {
+            if (s.charAt(i) == s.charAt(length - 1)) {
+                i++;
+                return isPalindrome(s.substring(i, length - 1));
+            } else return false;
+        }
     }
 }
